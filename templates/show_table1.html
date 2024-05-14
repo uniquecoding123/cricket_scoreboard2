@@ -1,0 +1,40 @@
+<!-- table1.html -->
+
+{% extends "base.html" %}
+{% block title %}Home - Flask App{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='table1.css') }}">
+
+<div class="card user-card">
+    <h1>Submit Data</h1>
+    <form action="/submit_runs" method="post">
+        <label for="name1">Name of the player:</label><br>
+        <input type="text" id="name1" name="name1" required><br><br>
+        <label for="runs">Runs scored:</label><br>
+        <input type="number" id="runs" name="runs" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="card table-card">
+    <h1>Runs Scored</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Runs</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in table1_data %}
+                <tr>
+                    <td>{{ entry.name1 }}</td>
+                    <td>{{ entry.runs }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

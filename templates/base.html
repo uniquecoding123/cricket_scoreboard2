@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base_style.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <nav>
+            <ul>
+                <div class="navdata">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/show_table1">Most-Runs</a></li>
+                    <li><a href="/show_table2">Most-Wickets</a></li>
+                    <li><a href="/show_table3">Most-25s</a></li>
+                    <li><a href="/prob">H2H</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    {% block image %}
+    <img src="{{ url_for('static', filename='rc24.jpg') }}" class="image" />
+    {% endblock %}
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
