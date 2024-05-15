@@ -98,9 +98,9 @@
         {% for team in teams %}
         <tr>
             <td>{{ team.name }}</td>
-            <td>{{ ((team.wins/team.total_marks)*100)|int }}</td>
-            <td>{{ ((team.draws/team.total_marks)*100)|int }}</td>
-            <td>{{ ((team.losses/team.total_marks)*100)|int }}</td>
+            <td>{{ ((team.wins/team.total_marks)*100)|int }} %</td>
+            <td>{{ ((team.draws/team.total_marks)*100)|int }} %</td>
+            <td>{{ ((team.losses/team.total_marks)*100)|int }} %</td>
         </tr>
         {% endfor %}
     </table>

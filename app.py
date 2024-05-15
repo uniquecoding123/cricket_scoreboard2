@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://Cricketdb_owner:OVUrfTso39FN@ep-old-cherry-a1fwhrz9.ap-southeast-1.aws.neon.tech/Cricketdb?sslmode=require'
-
 db = SQLAlchemy(app)
 
 app.app_context().push()
@@ -30,7 +29,7 @@ class Table3(db.Model):
 
 # Drop existing tables to ensure a clean start
 
-# db.drop_all()
+#db.drop_all()
 
 # Recreate the tables based on the model definitions
 db.create_all()
@@ -98,8 +97,29 @@ def submit3():
 def show_table1():
     # Fetch data from Table1
     table1_data = Table1.query.order_by(Table1.runs.desc()).limit(5).all()
-    # table1_data = Table1.query.all()
+    #table1_data = Table1.query.all()
     return render_template('show_table1.html', table1_data=table1_data)
+
+@app.route('/more_runs', methods=['POST'])
+def more_runs():
+    # Fetch data from Table1
+    #table1_data = Table1.query.order_by(Table1.runs.desc()).limit(5).all()
+    table1_data = Table1.query.order_by(Table1.runs.desc()).all()
+    return render_template('more_runs.html', table1_data=table1_data)
+
+@app.route('/more_wickets', methods=['POST'])
+def more_wickets():
+    # Fetch data from Table1
+    #table1_data = Table1.query.order_by(Table1.runs.desc()).limit(5).all()
+    table1_data = Table2.query.order_by(Table2.wickets.desc()).all()
+    return render_template('more_wickets.html', table1_data=table1_data)
+
+@app.route('/more_50s', methods=['POST'])
+def more_50s():
+    # Fetch data from Table1
+    #table1_data = Table1.query.order_by(Table1.runs.desc()).limit(5).all()
+    table1_data = Table3.query.order_by(Table3.fifties.desc()).all()
+    return render_template('more_50s.html', table1_data=table1_data)
 
 
 @app.route('/show_table2')
