@@ -1,0 +1,30 @@
+<!-- table1.html -->
+
+{% extends "base.html" %}
+{% block title %}Home - Flask App{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='more_runs.css') }}">
+
+
+<div class="card table-card">
+    <h1>Runs Scored</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Runs</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in table1_data %}
+                <tr>
+                    <td>{{ entry.name1 }}</td>
+                    <td>{{ entry.runs }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
